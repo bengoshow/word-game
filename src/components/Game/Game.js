@@ -20,7 +20,7 @@ function Game() {
 
   function renderGuessRows(guesses) {
     return range(NUM_OF_GUESSES_ALLOWED).map((num) => {
-      return <Guess key={num} guess={!!guesses[num] ? guesses[num] : ''} />
+      return <Guess key={num} guess={!!guesses[num] ? guesses[num] : ''} answer={answer} />
     })
   }
 

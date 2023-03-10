@@ -20,6 +20,7 @@ function GuessForm({ handleGuesses }) {
         maxLength="5"
         title="5 letter word"
         required
+        autoFocus
         onChange={event => {
           const nextGuess = event.target.value.toUpperCase();
           setGuess(nextGuess);
