@@ -1,7 +1,8 @@
 import React from "react";
 
-function GuessForm({ handleGuesses }) {
+function GuessForm({ handleGuesses, inputDisabled }) {
   const [guess, setGuess] = React.useState('');
+
   function handleSubmit(event) {
     event.preventDefault();
     console.info({ guess });
@@ -21,6 +22,7 @@ function GuessForm({ handleGuesses }) {
         title="5 letter word"
         required
         autoFocus
+        disabled={inputDisabled}
         onChange={event => {
           const nextGuess = event.target.value.toUpperCase();
           setGuess(nextGuess);
