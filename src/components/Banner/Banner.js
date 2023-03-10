@@ -1,7 +1,6 @@
 import React from "react";
 
 function Banner({ bannerstate, numguesses, answer }) {
-  console.log({ bannerstate })
   if (bannerstate !== 'happy') {
     return (
       <div className={`${bannerstate} banner`}>
@@ -15,7 +14,7 @@ function Banner({ bannerstate, numguesses, answer }) {
       <p>
         <strong>Congratulations!</strong> Got it in
         {' '}
-        <strong> {numguesses} guesses</strong>.
+        <strong> {numguesses === 1 ? '1 guess' : `${numguesses} guesses`}</strong>.
       </p>
     </div>
   );

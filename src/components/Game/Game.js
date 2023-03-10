@@ -4,7 +4,6 @@ import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import { range } from '../../utils';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
-import { checkGuess } from '../../game-helpers';
 
 import Guess from '../Guess';
 import GuessForm from '../GuessForm';
@@ -41,14 +40,11 @@ function Game() {
     setGuesses(nextGuesses);
     setGuessRows(renderGuessRows(nextGuesses));
 
-    const checkResults = checkGuess(guess, answer);
-    let wrongLetter;
-    checkResults.map(result => (wrongLetter = result.status !== "correct"));
-    console.log({ wrongLetter });
-    const bannerState = wrongLetter ? 'sad' : 'happy';
-    console.log({ bannerState });
-    if (nextGuesses.length === NUM_OF_GUESSES_ALLOWED || !wrongLetter) {
-      setBanner(renderBanner(bannerState, nextGuesses.length));
+    if (guess === answer) {
+      setBanner(renderBanner('happy', nextGuesses.length));
+      setInputDisabled(true);
+    } else if (nextGuesses.length === NUM_OF_GUESSES_ALLOWED) {
+      setBanner(renderBanner('sad'));
       setInputDisabled(true);
     }
   }
