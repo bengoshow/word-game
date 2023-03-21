@@ -2,7 +2,10 @@ import React from "react";
 
 function GuessForm({ handleGuesses, inputDisabled }) {
   const [guess, setGuess] = React.useState('');
-
+  const guessRef = React.useRef();
+  React.useEffect(() => {
+    guessRef.current.focus();
+  }, [])
   function handleSubmit(event) {
     event.preventDefault();
     console.info({ guess });
@@ -21,7 +24,7 @@ function GuessForm({ handleGuesses, inputDisabled }) {
         maxLength="5"
         title="5 letter word"
         required
-        autoFocus
+        ref={guessRef}
         disabled={inputDisabled}
         onChange={event => {
           const nextGuess = event.target.value.toUpperCase();
